@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>gulyam_ai - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* --- Base Styles & Animations --- */
+    @keyframes moveGradient {
+      0% { background-position: 0% 50%;}
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+@keyframes scrollLeftAnimation { /* Logo Scroller Animation */
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Move by half the total width */
+}
+@-webkit-keyframes scrollLeftAnimation { /* Prefixed version */
+  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(-45deg, #000000, #050a1a, #000000, #0a0514);
+  background-size: 400% 400%;
+  animation: moveGradient 30s ease infinite;
+  color: #fff;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Header Styles --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+.demo-button {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.demo-button:hover {
+  background-color: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* --- Hero Section Styles --- */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 900px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 700px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+}
+
+.input-area {
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
+}
+
+.email-input {
+  padding: 12px 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #111;
+  color: #fff;
+  font-size: 16px;
+  width: 300px;
+}
+
+.email-input::placeholder {
+  color: #777;
+}
+
+.book-demo-button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.book-demo-button:hover {
+  background-color: #ddd;
+  transform: translateY(-2px);
+}
+
+/* Hero Animation Trigger Class */
+.animate-in .hero-title,
+.animate-in .hero-subtitle,
+.animate-in .input-area {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Logo Scroller Styles --- */
+.logo-scroller-section {
+  background-color: #000;
+  padding: 40px 0;
+  margin-top: 50px;
+  color: #ccc;
+  overflow: hidden; /* Prevent body scrollbar */
+}
+
+.logo-scroller-section h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #aaa;
+  letter-spacing: 0.5px;
+}
+
+.logo-scroller { /* The viewport */
+  width: 100%;
+  overflow: hidden; /* Hides overflowing content */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-scroller-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content; /* Width based on content (two sets of logos) */
+  align-items: center; /* Vertical alignment */
+  /* Apply Animation */
+  animation: scrollLeftAnimation 45s linear infinite;
+  -webkit-animation: scrollLeftAnimation 45s linear infinite;
+}
+
+.logo-scroller:hover .logo-scroller-inner {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+}
+
+.logo-item { /* Individual logo container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px; /* Space between logos */
+  height: 50px; /* Consistent height */
+  flex-shrink: 0; /* Prevent shrinking */
+  white-space: nowrap;
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+}
+
+/* Style for actual images when you add them */
+/*
+.logo-item img {
+    display: block;
+    max-height: 100%;
+    max-width: 150px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) grayscale(0.3) opacity(0.8);
+}
+*/
+
+/* --- Alert Section Styles --- */
+.alerts-section {
+  padding: 80px 40px 60px 40px; /* More top padding */
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative; /* Needed for background elements if added later */
+  z-index: 2; /* Above background elements */
+}
+
+.alerts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px; /* Slightly more gap */
+}
+
+/* --- Updated Alert Card Styles (Glassmorphism) --- */
+.alert-card {
+  /* Glassmorphism Background & Border */
+  background: rgba(30, 30, 35, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+  /* Layout & Content */
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  color: #e0e0e0;
+
+  /* Animation Base State (Hidden) */
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 0.6s ease-out,
+              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 0.3s ease,
+              background-color 0.3s ease, /* For click effect */
+              border-color 0.3s ease;      /* For click effect */
+  will-change: transform, opacity;
+}
+
+/* Placeholder for the chart area */
+.card-chart-placeholder {
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    color: #666;
+    border: 1px dashed rgba(255, 255, 255, 0.1); /* Optional dashed border */
+}
+
+.alert-card h3 {
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.alert-card p {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.5;
+  margin-bottom: auto; /* Push button to bottom */
+  padding-bottom: 20px; /* Space above button */
+}
+
+.alert-card button {
+  background-color: rgba(50, 50, 55, 0.8);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  align-self: center;
+  width: 80%;
+  margin-top: auto;
+}
+
+.alert-card button:hover {
+  background-color: rgba(70, 70, 75, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* State when the card should be visible (added by JS) */
+.alert-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hover effect - subtler */
+.alert-card.is-visible:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Clicked/Selected State */
+.alert-card.is-selected {
+  background-color: rgba(60, 60, 65, 0.75); /* Darker background */
+  border-color: rgba(255, 255, 255, 0.3); /* Brighter border */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1); /* Subtle glow */
+}
+
+/* Staggered Animation Delays for Alert Cards*/
+.alert-card:nth-child(1).is-visible { transition-delay: 0.1s; }
+.alert-card:nth-child(2).is-visible { transition-delay: 0.2s; }
+.alert-card:nth-child(3).is-visible { transition-delay: 0.3s; }
+.alert-card:nth-child(4).is-visible { transition-delay: 0.4s; }
+.alert-card:nth-child(5).is-visible { transition-delay: 0.5s; }
+.alert-card:nth-child(6).is-visible { transition-delay: 0.6s; }
+
+/* --- Sequential Lines Section Styles (Cycling) --- */
+.sequential-lines-section {
+  padding: 80px 40px; /* Adjusted padding */
+  background-color: #000;
+  text-align: center;
+  overflow: hidden;
+}
+
+.lines-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative; /* Crucial for absolute positioning of children */
+  min-height: 120px; /* Set a min-height to contain the tallest line, adjust as needed */
+  display: flex; /* Use flex to help center */
+  align-items: center;
+  justify-content: center;
+}
+
+.sequential-line {
+  font-size: 2.8rem;
+  line-height: 1.4;
+  color: #b0b0b0;
+  margin: 0; /* Remove default margins */
+  font-weight: 500;
+  width: 100%; /* Ensure it takes full width for centering */
+
+  /* --- Positioning & Initial State --- */
+  position: absolute; /* Stack lines on top of each other */
+  top: 50%; /* Position top edge at center */
+  left: 0;
+  right: 0;
+  opacity: 0; /* Start hidden */
+  transform: translateY(-50%); /* Pull up by half its height for true vertical center */
+
+  /* --- Transition for fade in/out --- */
+  transition: opacity 0.5s ease-in-out; /* Only transition opacity */
+  will-change: opacity;
+}
+
+/* Style for the second line (bold white) - specific styling */
+.sequential-line:nth-child(2) strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Visible state (added/removed by JS) */
+.sequential-line.is-visible {
+  opacity: 1;
+  /* transform: translateY(-50%); No transform needed here if only opacity changes */
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    position: static; /* Header becomes static on small screens */
+    background-color: #000;
+    backdrop-filter: none;
+  }
+
+  nav ul {
+    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+    display: none; /* Consider hiding nav items or using a burger menu */
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+  /* Add styles for a burger menu toggle if implementing */
+
+  .hero-section {
+    min-height: 70vh;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .input-area {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  .email-input {
+    width: 100%; /* Full width within input-area */
+    max-width: 350px;
+  }
+
+  .book-demo-button {
+     width: calc(100% - 30px); /* Full width minus padding */
+     max-width: 350px;
+  }
+
+  .logo-scroller-section {
+      margin-top: 30px;
+      padding: 30px 0;
+  }
+  .logo-item {
+      padding: 0 25px; /* Less padding on mobile */
+      height: 40px;
+  }
+
+   .alerts-section {
+        padding: 40px 20px;
+   }
+   .alerts-grid {
+        gap: 25px;
+   }
+   .alert-card {
+        min-height: 320px; /* Adjust min-height if needed */
+   }
+
+   /* Sequential Lines Responsive */
+   .sequential-lines-section {
+        padding: 50px 20px;
+    }
+    .lines-container {
+        min-height: 100px; /* Adjust min-height for smaller font */
+    }
+    .sequential-line {
+        font-size: 1.8rem;
+        line-height: 1.5;
+    }
+
+}
+/* --- Features & Globe Section Styles --- */
+
+
+.features-globe-section {
+padding: 100px 40px;
+background-color: #000; /* Or inherit/transparent to match body /
+overflow: hidden; / Prevent animation artifacts from spilling */
+}
+
+.features-globe-container {
+max-width: 1400px;
+margin: 0 auto;
+display: flex;
+align-items: stretch; /* Make columns same height /
+gap: 50px; / Space between columns */
+}
+
+.features-column-left {
+flex: 1 1 40%; /* Takes up 40% of the available space /
+display: flex;
+flex-direction: column;
+justify-content: center; / Vertically center the two cards /
+gap: 30px; / Space between the two cards */
+}
+
+.features-column-right {
+flex: 1 1 60%; /* Takes up 60% /
+display: flex; / Allows the card inside to potentially grow */
+}
+
+.feature-card {
+/* Glassmorphism - Adapt from previous styles /
+background: rgba(25, 25, 30, 0.65);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 20px;
+padding: 30px;
+box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+color: #e0e0e0;
+display: flex; / Use flex for better internal layout /
+flex-direction: column; / Stack icon, title, text, (globe) */
+
+/* Animation Base State */
+opacity: 0;
+transform: translateY(30px); /* Animate from bottom */
+transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+will-change: opacity, transform;
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+IGNORE_WHEN_COPYING_END
+
+}
+/* Specific style for the right card to fill height /
+.features-column-right .feature-card {
+width: 100%; / Ensure it takes full column width */
+}
+
+.feature-card.is-visible {
+opacity: 1;
+transform: translateY(0);
+}
+/* Staggered delay for left feature cards /
+.features-column-left .feature-card:nth-child(1).is-visible {
+transition-delay: 0.1s;
+}
+.features-column-left .feature-card:nth-child(2).is-visible {
+transition-delay: 0.3s; / More delay for second card /
+}
+/ Delay for the right card /
+.features-column-right .feature-card.is-visible {
+transition-delay: 0.2s; / Delay relative to left column animation start */
+}
+
+.feature-icon {
+font-size: 1.8rem; /* Icon size /
+color: #fff;
+margin-bottom: 15px;
+width: fit-content; / Prevent icon taking full width */
+}
+
+.feature-card h3 {
+font-size: 1.4rem;
+color: #fff;
+margin-top: 0;
+margin-bottom: 10px;
+line-height: 1.3;
+}
+
+.feature-card p {
+font-size: 0.95rem;
+color: #bbb;
+line-height: 1.6;
+margin-bottom: 0; /* Reset margin */
+}
+
+/* Push globe down in the right card /
+.features-column-right .feature-card p {
+margin-bottom: 30px; / Space between text and globe /
+}
+.features-column-right .feature-card .globe-placeholder {
+margin-top: auto; / Push globe to bottom */
+}
+
+/* --- Globe Placeholder & Rotation --- /
+@keyframes rotateSimple { / Simple CSS Rotation */
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+.globe-placeholder {
+width: 85%; /* Relative width /
+max-width: 450px; / Max size /
+aspect-ratio: 1 / 1; / Maintain square/circle shape /
+border-radius: 50%;
+margin: 20px auto 0 auto; / Center horizontally, add top margin /
+position: relative; / For pseudo-elements /
+background-color: #050505; / Dark background for dots /
+box-shadow: inset 0 0 40px rgba(0,0,0,0.6), / Inner shadow for depth /
+0 0 50px -15px rgba(255, 255, 255, 0.1); / Outer subtle glow /
+overflow: hidden; / Important for dot effect /
+animation: rotateSimple 60s linear infinite; / Apply simple rotation */
+}
+
+/* Create the dotted effect using pseudo-elements /
+.globe-placeholder::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: 50%;
+/ Repeating radial gradient for dots /
+background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.6) 1px, transparent 1.5px);
+background-size: 6px 6px; / Adjust size/spacing of dots /
+opacity: 0.4; / Make dots slightly transparent */
+}
+
+/* Optional: Add a subtle lighting gradient overlay */
+.globe-placeholder::after {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: 50%;
+background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0) 65%);
+}
+
+/* --- Responsive Styles --- /
+@media (max-width: 992px) { / Tablet and smaller /
+.features-globe-container {
+flex-direction: column;
+gap: 40px; / Adjust gap /
+align-items: center; / Center items when stacked /
+}
+.features-column-left,
+.features-column-right {
+flex-basis: auto;
+width: 90%; / Control width when stacked /
+max-width: 600px; / Optional max width /
+}
+.features-column-right {
+order: -1; / Move globe section to the top /
+}
+.features-column-right .feature-card {
+align-items: center; / Center content in right card /
+text-align: center;
+}
+.globe-placeholder {
+width: 60%; / Adjust size /
+max-width: 350px;
+margin-top: 30px; / Adjust spacing /
+}
+.features-column-left {
+justify-content: flex-start; / Align left cards top */
+}
+}
+
+@media (max-width: 768px) { /* Mobile specific adjustments /
+.features-globe-section { padding: 60px 20px; }
+.features-column-left, .features-column-right { width: 100%; }
+.feature-card { padding: 25px; }
+.feature-card h3 { font-size: 1.2rem; }
+.feature-card p { font-size: 0.9rem; }
+.globe-placeholder { width: 75%; max-width: 280px; }
+}/ End Media Query /
+.results-section {
+background-color: #000000;
+padding: 100px 40px;
+text-align: center;
+color: #fff;
+overflow: hidden; / Contain animations */
+}
+
+.results-title {
+  font-size: 2.8rem; /* Adjust size as needed */
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 70px; /* Space below title */
+  max-width: 700px; /* Limit width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; /* Gap between columns */
+  max-width: 1100px;
+  margin: 0 auto 70px auto; /* Center grid and add space below */
+}
+
+.result-item {
+  position: relative; /* For the separator line */
+  padding: 0 20px; /* Padding within each item */
+   /* Animation base state */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+ /* Add separator lines using ::before */
+.result-item:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 10%; /* Start slightly below the top */
+    bottom: 10%; /* End slightly above the bottom */
+    left: -20px; /* Position to the left edge (half the gap) */
+    width: 1px;
+    /* Subtle gradient for the line */
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0)
+    );
+}
+
+.result-number {
+  font-size: 7rem; /* Very large number */
+  font-weight: 600; /* Bold */
+  line-height: 1;
+  margin-bottom: 15px; /* Space below number */
+  color: #f0f0f0; /* Slightly off-white */
+  letter-spacing: -2px; /* Tighten spacing slightly */
+}
+
+.result-description {
+  font-size: 1rem; /* Standard text size */
+  color: #b0b0b0; /* Light grey */
+  line-height: 1.5;
+  max-width: 250px; /* Limit width for better wrapping */
+  margin: 0 auto; /* Center description text block */
+}
+
+/* Animation trigger */
+.result-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Staggered animation delays for result items */
+.result-item:nth-child(1).is-visible { transition-delay: 0.1s; }
+.result-item:nth-child(2).is-visible { transition-delay: 0.2s; }
+.result-item:nth-child(3).is-visible { transition-delay: 0.3s; }
+        /* --- Results Section Styling (Keep existing .results-section, .container, .title, .grid, .item, .label) --- */
+
+        /* Container for the number itself to handle overflow */
+        .result-number-container {
+            height: 7rem; /* Match .result-number font-size + line-height */
+            line-height: 7rem;
+            overflow: hidden; /* Clip the rolling digits */
+            display: inline-block; /* Allow centering */
+            vertical-align: middle; /* Align with potential suffix */
+            position: relative; /* For absolute positioning of digits if needed */
+        }
+
+        /* Style for the main number container, which will hold digits */
+        .result-number {
+            display: inline-block; /* Changed from block */
+            font-size: 7rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            letter-spacing: -2px;
+            line-height: 1; /* Ensure line height matches font size */
+            vertical-align: middle; /* Align vertically */
+            margin-bottom: 15px;
+            /* Remove direct transition, animation is per-digit */
+        }
+
+        /* Style for individual digits generated by JS */
+        .digit-roller {
+            display: inline-block;
+            height: 7rem; /* Match parent */
+            line-height: 7rem; /* Match parent */
+            overflow: hidden;
+            vertical-align: middle; /* Ensure digits align */
+            position: relative; /* For positioning inner span */
+            width: 4rem; /* Approximate width of a large digit - ADJUST AS NEEDED */
+            text-align: center; /* Center the digit within its space */
+        }
+
+        .digit-roller-inner {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            /* Initial state: positioned high up */
+            transform: translateY(-100%);
+            /* Animation will be applied by JS adding a class */
+            transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth elastic easing */
+            /* We'll add delay via JS/CSS variable */
+            transition-delay: var(--digit-delay, 0s);
+        }
+
+        /* Class added by JS to trigger the roll */
+        .digit-roller-inner.roll-to-final {
+            /* Final position calculated by JS based on target digit */
+            /* Example: transform: translateY(-70%); */
+        }
+
+        /* Suffix styling */
+        .result-suffix {
+            display: inline-block;
+            font-size: 3.5rem; /* Smaller than number */
+            font-weight: 500;
+            color: #a0b0c0; /* Lighter grey */
+            vertical-align: baseline; /* Align near bottom of numbers */
+            margin-left: 5px;
+        }
+
+
+        /* Animation trigger class (for the overall item fade-in) */
+        .result-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered animation delays (keep existing) */
+        .result-item:nth-child(1).is-visible { transition-delay: 0.1s; }
+        .result-item:nth-child(2).is-visible { transition-delay: 0.2s; }
+        .result-item:nth-child(3).is-visible { transition-delay: 0.3s; }
+
+        /* Update Button Style */
+        .results-button {
+            background: linear-gradient(90deg, #4dabf7, #74c0fc); /* Blue gradient */
+            color: #051020;
+            border: none; padding: 14px 35px;
+            border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+            /* Animation Base State */
+             opacity: 0;
+             transform: translateY(30px);
+             transition: opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s, /* Staggered fade/slide */
+                         background 0.3s ease, box-shadow 0.3s ease; /* Standard transitions */
+        }
+        .animate-in .results-button { /* Animation trigger for button */
+             opacity: 1;
+             transform: translateY(0);
+        }
+
+        .results-button:hover {
+             transform: translateY(-3px) scale(1.03);
+             background: linear-gradient(90deg, #74c0fc, #a5d8ff);
+             box-shadow: 0 6px 20px rgba(77, 171, 247, 0.4);
+        }
+
+         /* Responsive adjustments for results */
+         @media (max-width: 768px) {
+             .results-section { padding: 60px 20px; }
+             .results-title { font-size: 2rem; margin-bottom: 40px; }
+             .results-grid { gap: 30px; grid-template-columns: 1fr; /* Stack on mobile */}
+             .result-item:not(:first-child)::before { display: none; } /* Hide separators */
+             .result-number-container, .result-number, .digit-roller { height: 5rem; line-height: 5rem; } /* Smaller size */
+             .result-number { font-size: 5rem; }
+             .digit-roller { width: 2.8rem; } /* Adjust width */
+             .result-suffix { font-size: 2.5rem; }
+             .result-label { font-size: 0.9rem; }
+             .results-button { margin-top: 20px; } /* Add space when stacked */
+         }
+
+.results-button {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 8px; /* Slightly more rounded */
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.results-button:hover {
+  background-color: #e0e0e0; /* Slightly darker on hover */
+  transform: scale(1.03); /* Slight scale up */
+}
+        /* --- Final CTA Section Styles --- */
+        .final-cta-section {
+            padding: 120px 40px; /* Generous padding */
+            text-align: center;
+            position: relative; /* Needed for potential pseudo-elements or absolute children */
+            overflow: hidden; /* Clip background effects */
+            z-index: 2; /* Above body background */
+
+            /* The Curved Light Background Effect */
+            background:
+                /* Top Layer: The blue/cyan curved light */
+                radial-gradient(
+                    ellipse 120% 80% at 50% -30%, /* Wide ellipse positioned above the top edge */
+                    rgba(0, 150, 255, 0.25) 0%, /* Brighter blue center */
+                    rgba(0, 100, 200, 0.1) 35%, /* Fading blue */
+                    rgba(0, 50, 100, 0.0) 60% /* Fade to transparent */
+                ),
+                /* Base Layer: Dark background to blend with body */
+                #01020a; /* Dark blue/black */
+        }
+
+        .cta-content-container {
+             max-width: 750px; /* Limit width of text/button */
+             margin: 0 auto; /* Center container */
+              position: relative; /* Ensure content is above pseudo-elements if added */
+              z-index: 3;
+        }
+
+        .cta-title {
+            font-size: 2.6rem; /* Adjust size */
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 35px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+             /* Animation */
+             opacity: 0;
+             transform: translateY(30px);
+             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+                /* --- Footer Styles --- */
+        .site-footer {
+            background-color: #000000; /* Black background */
+            color: #a0a0a0; /* Light grey text */
+            padding-top: 60px; /* Padding above content */
+            font-size: 0.9rem;
+            position: relative; /* Needed for graphic */
+            overflow: hidden; /* Clip graphic */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr) 1.5fr; /* Adjust column ratios */
+            gap: 30px; /* Gap between columns */
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 50px 40px; /* Bottom padding */
+            position: relative; /* Above graphic */
+            z-index: 2;
+        }
+
+        /* Footer Columns General */
+        .footer-logo-column,
+        .footer-links-column,
+        .footer-contact-column {
+            padding: 0 10px; /* Internal padding */
+        }
+
+        /* Logo Column */
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+            /* If using an image: */
+            /* img { max-width: 150px; height: auto; } */
+        }
+
+        .footer-social-icons a {
+            color: #888;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        .footer-social-icons a:hover {
+            color: #fff;
+        }
+
+        /* Links Columns */
+        .footer-links-column h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-links-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links-column a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links-column a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Contact Column */
+         .footer-contact-column h4 {
+             font-size: 1rem;
+             color: #fff;
+             margin-bottom: 15px;
+             font-weight: 600;
+         }
+         .footer-contact-column p {
+             margin-bottom: 10px;
+         }
+          .footer-contact-column a {
+              color: #a0a0a0;
+              text-decoration: none;
+              transition: color 0.3s ease;
+           }
+          .footer-contact-column a:hover {
+               color: #fff;
+               text-decoration: underline;
+          }
+
+        /* Footer Bottom (Copyright) */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 0.8rem;
+            color: #888;
+            position: relative; /* Above graphic */
+            z-index: 2;
+            background-color: #000; /* Ensure solid background */
+        }
+
+        /* Faint Background Graphic Simulation */
+        .footer-graphic {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40%; /* Adjust size */
+            height: 100%;
+            max-width: 500px; /* Max size */
+            /* Use linear gradients for faint angular lines */
+            background: linear-gradient(
+                to top left,
+                transparent 50%,
+                rgba(255, 255, 255, 0.02) 50.5%, /* Line 1 */
+                rgba(255, 255, 255, 0.02) 51.5%,
+                transparent 52%
+            ),
+            linear-gradient(
+                to top left,
+                transparent 60%,
+                rgba(255, 255, 255, 0.015) 60.5%, /* Line 2 - fainter */
+                rgba(255, 255, 255, 0.015) 61.5%,
+                transparent 62%
+            ),
+             linear-gradient( /* Added a third fainter line */
+                to top left,
+                transparent 68%,
+                rgba(255, 255, 255, 0.01) 68.5%,
+                rgba(255, 255, 255, 0.01) 69.5%,
+                transparent 70%
+            );
+            background-repeat: no-repeat;
+            background-size: 100% 100%; /* Ensure gradients cover the area */
+            pointer-events: none; /* Click through */
+            z-index: 1; /* Behind content */
+            opacity: 0.7; /* Adjust visibility */
+        }
+
+
+        /* Responsive Footer */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns */
+                gap: 25px;
+            }
+            .footer-logo-column { grid-column: 1 / -1; text-align: center; margin-bottom: 30px;} /* Logo full width */
+            .footer-contact-column { grid-column: 1 / -1; text-align: center; } /* Contact full width */
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr; /* 2 columns */
+                padding: 0 20px 40px 20px;
+            }
+             .footer-logo-column,
+             .footer-contact-column {
+                 grid-column: 1 / -1; /* Keep full width */
+                 text-align: center;
+             }
+             .footer-links-column {
+                  text-align: center; /* Center links */
+              }
+               .footer-graphic {
+                   width: 60%; /* Adjust graphic size */
+                   opacity: 0.5;
+               }
+        }
+
+         @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr; /* 1 column */
+                text-align: center;
+            }
+             .footer-links-column {
+                  margin-bottom: 20px; /* Space between link groups */
+              }
+             .footer-graphic {
+                  display: none; /* Hide graphic on very small screens */
+              }
+        }
+
+        .cta-button {
+            /* Reusing styles similar to .book-demo-button */
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 28px; /* Adjust padding */
+            border-radius: 8px; /* Slightly more rounded */
+            cursor: pointer;
+            font-size: 1rem; /* Adjust size */
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+             /* Animation */
+             opacity: 0;
+             transform: translateY(30px);
+             transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s, /* Staggered */
+                         background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* Subtle white glow */
+        }
+
+        .cta-button:hover {
+            background-color: #e0e0e0; /* Slightly grey on hover */
+            transform: translateY(-3px);
+             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-button i {
+            font-size: 0.9em; /* Adjust arrow size */
+        }
+
+        /* Animation Trigger */
+         .animate-in .cta-title,
+         .animate-in .cta-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .final-cta-section {
+                padding: 80px 20px;
+                 /* Adjust background gradient for smaller screens */
+                 background:
+                     radial-gradient(
+                         ellipse 150% 70% at 50% -25%, /* Adjust shape/position */
+                         rgba(0, 150, 255, 0.2) 0%,
+                         rgba(0, 100, 200, 0.08) 40%,
+                         rgba(0, 50, 100, 0.0) 65%
+                     ),
+                     #01020a;
+             }
+             .cta-title { font-size: 2rem; }
+             .cta-button { padding: 10px 24px; font-size: 0.95rem; }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">gulyam_ai</div>
+    <nav>
+      <ul>
+        <li><a href="product/">Product</a></li>
+        <li><a href="#">Company</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </nav>
+    <button class="demo-button">Request a Demo</button>
+  </header>
+
+  <section class="hero-section">
+    <h1 class="hero-title">AI-Powered Solutions for the Complete Mechanical Stack</h1>
+    <p class="hero-subtitle">Unlock the full potential of your mechanical data with gulyam_ai's comprehensive AI solutions for Industry 4.0.</p>
+    <div class="input-area">
+      <input type="email" class="email-input" placeholder="What's your work email?">
+      <button class="book-demo-button">Book demo</button>
+    </div>
+  </section>
+
+  <!-- Logo Scroller Section -->
+
+  <section class="logo-scroller-section">
+      <h3>Trusted by leading Quality, Service and Engineering teams</h3>
+      <div class="logo-scroller">
+          <div class="logo-scroller-inner">
+              <!-- === LOGOS - SET 1 (Replace with actual <img> tags) === -->
+              <div class="logo-item">Baxter</div>
+              <div class="logo-item">DENSO</div>
+              <div class="logo-item">PennEngineering</div>
+              <div class="logo-item">Raytheon Technologies</div>
+              <div class="logo-item">Newell Brands</div>
+              <div class="logo-item">Great Dane</div>
+              <div class="logo-item">Cummins</div>
+              <div class="logo-item">Boeing</div>
+              <div class="logo-item">U.S. Air Force</div>
+              <!-- === LOGOS - SET 2 (Duplicate for seamless loop) === -->
+              <div class="logo-item">Baxter</div>
+              <div class="logo-item">DENSO</div>
+              <div class="logo-item">PennEngineering</div>
+              <div class="logo-item">Raytheon Technologies</div>
+              <div class="logo-item">Newell Brands</div>
+              <div class="logo-item">Great Dane</div>
+              <div class="logo-item">Cummins</div>
+              <div class="logo-item">Boeing</div>
+              <div class="logo-item">U.S. Air Force</div>
+          </div>
+      </div>
+  </section>
+  <!-- End Logo Scroller Section -->
+
+  <section class="alerts-section">
+    <div class="alerts-grid">
+      <div class="alert-card green">
+        <div class="card-chart-placeholder">(Chart Area: ABS Issues)</div>
+        <h3>Emerging ABS Electrical Issues Detected</h3>
+        <p>New emerging intermittent power failure issue detected with the Model R1 ABS with 57 new events since last week</p>
+        <button>Investigate & Launch Project</button>
+      </div>
+      <div class="alert-card blue">
+        <div class="card-chart-placeholder">(Bar Graph: Countermeasure)</div>
+        <h3>Broken countermeasure detected</h3>
+        <p>Motor stall persists after design change; 3 potential sub-failure modes identified</p>
+        <button>Notify Design team</button>
+      </div>
+      <div class="alert-card red">
+        <div class="card-chart-placeholder">(Line Graph: DTC Surge)</div>
+        <h3>Surging DTC Code-4571</h3>
+        <p>The new 45T engine configuration exhibits a 65% higher rate of DTC Code 4571 occurrences than average</p>
+        <button>Send alert to supplier</button>
+      </div>
+      <div class="alert-card aqua">
+         <div class="card-chart-placeholder">(Diverging Lines: Config Spike)</div>
+        <h3>New config associated with spike with failures</h3>
+        <p>New release Version 45C has 60% higher failure rate compared to the historical data</p>
+        <button>Notify product team</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sequential Lines Section -->
+
+  <section class="sequential-lines-section">
+    <div class="lines-container">
+        <!-- Use the example text for the first two lines -->
+        <p class="sequential-line">Uncover masked issues before they cause</p>
+        <p class="sequential-line"><strong>customer dissatisfaction</strong></p>
+        <!-- Add more lines for the sequence (total 10) -->
+        <p class="sequential-line">Identify root causes faster.</p>
+        <p class="sequential-line">Prevent recurring problems.</p>
+        <p class="sequential-line">Improve product quality.</p>
+        <p class="sequential-line">Reduce warranty claims.</p>
+        <p class="sequential-line">Enhance user experience.</p>
+        <p class="sequential-line">Predict potential failures.</p>
+        <p class="sequential-line">Optimize maintenance schedules.</p>
+        <p class="sequential-line">Gain deeper insights from data.</p>
+    </div>
+  </section>
+    <!-- Features and Globe Section -->
+  <section class="features-globe-section">
+    <div class="features-globe-container">
+
+<!-- Left Column with Stacked Cards -->
+    <div class="features-column-left">
+        <!-- Feature Card 1 -->
+        <div class="feature-card">
+            <!-- Replace with appropriate Font Awesome icon class -->
+            <i class="fa-solid fa-magnifying-glass feature-icon"></i>
+            <h3>Detect issues at the earliest sign</h3>
+            <p>High-precision AI automatically catches and contextualizes issues as soon as a trend emerges in the hands of your customers.</p>
+        </div>
+        <!-- Feature Card 2 -->
+        <div class="feature-card">
+             <!-- Replace with appropriate Font Awesome icon class -->
+             <i class="fa-regular fa-clock feature-icon"></i>
+             <h3>Spend time solving issues, not manually looking for them</h3>
+             <p>Empower your team to solve complex problems instead of being stuck manually analyzing text and disconnected data.</p>
+        </div>
+    </div>
+
+    <!-- Right Column with Single Card and Globe -->
+    <div class="features-column-right">
+         <!-- Feature Card 3 (Contains the Globe) -->
+         <div class="feature-card">
+             <!-- Replace with appropriate Font Awesome icon class -->
+             <i class="fa-solid fa-diagram-project feature-icon"></i>
+             <h3>Breakdown silos across your organization</h3>
+             <p>Enable your team to gain visibility and collaborate across geographic regions and departments to understand the full scope of an emerging issue.</p>
+
+             <!-- Globe Placeholder -->
+             <div class="globe-placeholder">
+                <!-- The rotating dotted globe effect is applied via CSS -->
+                <!-- Use a background image or an SVG for the dots -->
+             </div>
+         </div>
+    </div>
+
+</div>
+    <!-- ========================== -->
+    <!-- Footer Section -->
+    <!-- ========================== -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo-column">
+                <!-- Use your text logo or replace with <img> if you have one -->
+                <div class="footer-logo">gulyam_ai</div>
+                <!-- Optional: Add social media icons here -->
+                <div class="footer-social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    {/* Add more social links as needed */}
+                </div>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#thermosolver">ThermoSolver</a></li>
+                    <li><a href="#stressmaster">StressMaster</a></li>
+                    <li><a href="#mechmotion">MechMotion AI</a></li>
+                    <li><a href="#fluidflow">FluidFlow AI</a></li>
+                    <li><a href="#designgenesis">DesignGenesis AI</a></li>
+                     <li><a href="/product">All Products...</a></li> {/* Link to product page */}
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Responsible Disclosure</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-column">
+                <h4>Contact</h4>
+                <p><a href="mailto:contact@gulyam_ai.com">contact@gulyam_ai.com</a></p>
+                 {/* Add address or phone if needed */}
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="copyright-year">2024</span> gulyam_ai Inc. All rights reserved.</p>
+        </div>
+
+         {/* Faint background graphic simulation */}
+         <div class="footer-graphic"></div>
+    </footer>
+    <!-- ========================== -->
+    <!-- End Footer Section -->
+    <!-- ========================== -->
+  </section>
+   <section class="results-section">
+    <h2 class="results-title">Impactful results that reduce the cost of poor quality</h2>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-number">16%</div>
+        <p class="result-description">reduction in warranty & service operational cost</p>
+      </div>
+      <div class="result-item">
+        <div class="result-number">30%</div>
+        <p class="result-description">increase in detection-to-issue countermeasure speed</p>
+      </div>
+      <div class="result-item">
+        <div class="result-number">27%</div>
+        <p class="result-description">decrease in downtime leading to improved customer satisfaction</p>
+      </div>
+    </div>
+    <button class="results-button">Start now →</button>
+  </section>
+      <section class="final-cta-section">
+        <div class="cta-content-container">
+            <h2 class="cta-title">Start enhancing your products integrity & profitability today</h2>
+            <a href="#get-started" class="cta-button"> {/* Update href as needed */}
+                Get started <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+   <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo-column">
+                <!-- Use your text logo or replace with <img> if you have one -->
+                <div class="footer-logo">gulyam_ai</div>
+                <!-- Optional: Add social media icons here -->
+                <div class="footer-social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    {/* Add more social links as needed */}
+                </div>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#thermosolver">ThermoSolver</a></li>
+                    <li><a href="#stressmaster">StressMaster</a></li>
+                    <li><a href="#mechmotion">MechMotion AI</a></li>
+                    <li><a href="#fluidflow">FluidFlow AI</a></li>
+                    <li><a href="#designgenesis">DesignGenesis AI</a></li>
+                     <li><a href="/product">All Products...</a></li> {/* Link to product page */}
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Responsible Disclosure</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-column">
+                <h4>Contact</h4>
+                <p><a href="mailto:contact@gulyam_ai.com">contact@gulyam_ai.com</a></p>
+                 {/* Add address or phone if needed */}
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="copyright-year">2024</span> gulyam_ai Inc. All rights reserved.</p>
+        </div>
+
+         {/* Faint background graphic simulation */}
+         <div class="footer-graphic"></div>
+    </footer>
+  <!-- End Features and Globe Section -->
+  <!-- End Sequential Lines Section -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+const animatedSections = document.querySelectorAll('.hero-section, .results-section, .alert-card, .sequential-lines-section, .feature-card, .result-item, .final-cta-section');
+      // --- Hero Section Animation ---
+      const heroSection = document.querySelector('.hero-section');
+      function checkHeroScroll() {
+        // Ensure heroSection exists before trying to access its properties
+        if (heroSection && !heroSection.classList.contains('animate-in')) {
+          const heroSectionTop = heroSection.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          // Animate when the top of the section is within 65% of the viewport height
+          if (heroSectionTop < windowHeight * 0.65) {
+            heroSection.classList.add('animate-in');
+          }
+        }
+      }
+      // Initial check in case the section is already in view on load
+      checkHeroScroll();
+      // Listen for scroll events - passive improves performance
+      window.addEventListener('scroll', checkHeroScroll, { passive: true });
+
+      // --- Alert Card Animation & Click Handling ---
+      const alertCards = document.querySelectorAll('.alert-card');
+
+      if (alertCards.length > 0) {
+        // --- Intersection Observer for Entrance Animation ---
+        const alertObserverOptions = {
+          root: null, // Use the viewport as the root
+          rootMargin: '0px', // No margin
+          threshold: 0.15 // Trigger when 15% of the card is visible
+        };
+
+        const alertObserverCallback = (entries, observer) => {
+          entries.forEach(entry => {
+            // When a card intersects with the viewport
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible'); // Add class to trigger CSS animation
+              observer.unobserve(entry.target); // Stop observing this card once animated
+            }
+          });
+        };
+
+        // Create the observer
+        const cardObserver = new IntersectionObserver(alertObserverCallback, alertObserverOptions);
+
+        // Observe each alert card
+        alertCards.forEach(card => {
+          cardObserver.observe(card);
+        });
+
+        // --- Click Listener for Selection ---
+        alertCards.forEach(card => {
+          card.addEventListener('click', function(event) {
+            // Prevent click event from bubbling up if clicking the button inside
+            if (event.target.tagName === 'BUTTON') {
+                 // Optional: Add specific logic for button clicks here if needed
+                 // console.log('Button clicked within card');
+                 return; // Don't toggle selection if button is clicked
+            }
+
+            // Logic for selecting only ONE card at a time
+            const currentlySelected = document.querySelector('.alert-card.is-selected');
+            if (currentlySelected && currentlySelected !== card) {
+              // If another card is selected, deselect it
+              currentlySelected.classList.remove('is-selected');
+            }
+            // Toggle the selected state for the clicked card
+            card.classList.toggle('is-selected');
+
+            /* --- Alternative: Allow MULTIPLE selections ---
+               Just toggle the class on the clicked card:
+               // card.classList.toggle('is-selected');
+            */
+          });
+        }); // End click listener loop
+
+      } // end if(alertCards.length > 0)
+
+
+      // --- Sequential Lines Animation (Cycling) ---
+      const linesSection = document.querySelector('.sequential-lines-section');
+      const lines = linesSection ? linesSection.querySelectorAll('.sequential-line') : null;
+      let lineIntervalId = null; // To store the interval ID
+      let currentLineIndex = 0;
+      const lineDisplayDuration = 2500; // Time each line stays visible (in milliseconds) - Adjust as needed
+
+      if (linesSection && lines && lines.length > 0) {
+          const linesObserverOptions = {
+              root: null,
+              threshold: 0.1 // Trigger when 10% of the section is visible
+          };
+
+          const startLineCycling = () => {
+              // Clear any existing interval to prevent duplicates if scrolled in/out quickly
+              if (lineIntervalId) {
+                  clearInterval(lineIntervalId);
+              }
+
+              // Function to show the current line and hide the previous
+              const cycleLines = () => {
+                  // Calculate previous index, handling wrap-around
+                  const previousLineIndex = (currentLineIndex - 1 + lines.length) % lines.length;
+
+                  // Hide the previous line
+                  if (lines[previousLineIndex]) {
+                      lines[previousLineIndex].classList.remove('is-visible');
+                  }
+
+                  // Show the current line
+                  if (lines[currentLineIndex]) {
+                      lines[currentLineIndex].classList.add('is-visible');
+                  }
+
+                  // Move to the next index for the next interval
+                  currentLineIndex = (currentLineIndex + 1) % lines.length;
+              };
+
+              // Show the first line immediately when cycling starts
+              // Ensure any previous line is hidden first if stopLineCycling wasn't called or didn't hide it
+               lines.forEach(line => line.classList.remove('is-visible'));
+              cycleLines(); // This now shows the very first line (index 0)
+
+              // Start the interval to cycle through the rest
+              lineIntervalId = setInterval(cycleLines, lineDisplayDuration);
+          };
+
+          const stopLineCycling = () => {
+              if (lineIntervalId) {
+                  clearInterval(lineIntervalId);
+                  lineIntervalId = null;
+                  // Hide the last visible line when scrolling out of view
+                  const lastVisibleIndex = (currentLineIndex - 1 + lines.length) % lines.length;
+                   if (lines[lastVisibleIndex]) {
+                     lines[lastVisibleIndex].classList.remove('is-visible');
+                  }
+                  currentLineIndex = 0; // Reset index for next time it scrolls in
+              }
+          };
+
+          // Observer callback
+          const linesObserverCallback = (entries, observer) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      // Start cycling when the section enters the viewport
+                      // console.log("Starting line cycling"); // Debug log
+                      startLineCycling();
+                  } else {
+                      // Stop cycling when the section leaves the viewport
+                      // console.log("Stopping line cycling"); // Debug log
+                      stopLineCycling();
+                  }
+              });
+          };
+
+          // Create and start the observer for the lines section
+          const linesObserver = new IntersectionObserver(linesObserverCallback, linesObserverOptions);
+          linesObserver.observe(linesSection);
+
+      } // end if lines exist
+      // --- End Sequential Lines Animation (Cycling) ---
+
+      // --- Feature Card Animation ---
+      const featureCards = document.querySelectorAll('.feature-card'); // Selects ALL feature cards
+      if (featureCards.length > 0) {
+         const featureObserverOptions = {
+             root: null,
+             rootMargin: '0px',
+             threshold: 0.2 // Trigger when 20% is visible
+         };
+         const featureObserverCallback = (entries, observer) => {
+             entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                     entry.target.classList.add('is-visible');
+                     observer.unobserve(entry.target); // Animate only once
+                 }
+             });
+         };
+         const featureObserver = new IntersectionObserver(featureObserverCallback, featureObserverOptions);
+         // Observe all cards (left and right columns)
+         featureCards.forEach(card => {
+             featureObserver.observe(card);
+         });
+         const resultItems = document.querySelectorAll('.result-item');
+      if (resultItems.length > 0) {
+           const resultObserverOptions = {
+               root: null,
+               threshold: 0.2 // Trigger when 20% of the item is visible
+           };
+
+           const resultObserverCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Animate only once
+                    }
+                });
+           };
+
+           const resultObserver = new IntersectionObserver(resultObserverCallback, resultObserverOptions);
+           resultItems.forEach(item => {
+               resultObserver.observe(item);
+           });
+                       // --- Animated Number Tumbler ---
+            const numberElements = document.querySelectorAll('.results-section .result-number');
+
+            if (numberElements.length > 0) {
+
+                const createDigitRoller = (finalDigit) => {
+                    const roller = document.createElement('span');
+                    roller.className = 'digit-roller';
+
+                    const inner = document.createElement('span');
+                    inner.className = 'digit-roller-inner';
+
+                    // Add digits 0-9 multiple times for smooth rolling appearance
+                    const digitsContent = '0123456789'.repeat(5); // Repeat for visual effect
+                    digitsContent.split('').forEach(digit => {
+                        const d = document.createElement('div');
+                        d.textContent = digit;
+                        inner.appendChild(d);
+                    });
+
+                    // Calculate the final position. Each digit is 1/10th of the height.
+                    // We target the *last* instance of the digit in our repeated string.
+                    const totalDigitsInRoller = digitsContent.length;
+                    const finalDigitIndex = digitsContent.lastIndexOf(finalDigit);
+                    // Target percentage: position of the digit from the TOP.
+                    // (e.g., if '7' is the 47th char out of 50, it's at 47/50 = 94% down)
+                    // We want translateY to be negative this percentage.
+                    const targetTranslateY = - (finalDigitIndex / totalDigitsInRoller) * 100;
+
+                    inner.dataset.targetTransform = `translateY(${targetTranslateY}%)`; // Store target transform
+
+                    roller.appendChild(inner);
+                    return roller;
+                };
+
+                const animateNumber = (element) => {
+                    const targetString = element.dataset.target || '0'; // Get target from data-target
+                    const suffix = targetString.replace(/[0-9.,]/g, '').trim();
+                    const targetValueString = targetString.replace(/[^0-9]/g, ''); // Only digits
+
+                    element.innerHTML = ''; // Clear existing content (like the initial '0%')
+
+                    // Create and append digit rollers
+                    targetValueString.split('').forEach((digit, index) => {
+                        const roller = createDigitRoller(digit);
+                        const inner = roller.querySelector('.digit-roller-inner');
+                         // Apply staggered delay using CSS variable
+                        const delay = (index * 0.1) + 0.2; // Base delay + stagger
+                        inner.style.setProperty('--digit-delay', `${delay}s`);
+                        element.appendChild(roller);
+                        // Trigger animation shortly after adding to DOM
+                        setTimeout(() => {
+                             inner.style.transform = inner.dataset.targetTransform;
+                             inner.classList.add('roll-to-final'); // Class maybe not needed if only transform changes
+                        }, 50 + index * 50); // Small delay + stagger to ensure element exists
+                    });
+
+                    // Append suffix if it exists
+                    if (suffix) {
+                        const suffixSpan = document.createElement('span');
+                        suffixSpan.className = 'result-suffix';
+                        suffixSpan.textContent = suffix;
+                        element.appendChild(suffixSpan);
+                    }
+
+                    element.classList.add('has-animated'); // Mark parent as animated
+                };
+
+                // Intersection Observer setup
+                const numberObserverOptions = {
+                    root: null,
+                    threshold: 0.2, // Trigger when 20% visible
+                    rootMargin: '0px'
+                };
+
+                const numberObserverCallback = (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const element = entry.target;
+                             // Check the parent .result-number, not the container
+                             if (!element.classList.contains('has-animated')) {
+                                animateNumber(element); // Start the tumbler animation
+                             }
+                            observer.unobserve(element); // Animate only once
+                        }
+                    });
+                };
+
+                const numberObserver = new IntersectionObserver(numberObserverCallback, numberObserverOptions);
+                numberElements.forEach(el => {
+                    numberObserver.observe(el); // Observe the .result-number span
+                });
+            }
+            // --- End Animated Number Tumbler ---
+      }
+      // ---
+      }
+       function checkGeneralScroll() {
+                animatedSections.forEach(section => {
+                    // Check if it's an alert card or result item for individual animation logic
+                    if (section.classList.contains('alert-card') || section.classList.contains('result-item') || section.classList.contains('feature-card')) {
+                        // Use threshold for items that need individual checking
+                        const observerOptions = { root: null, threshold: 0.2 };
+                        const observerCallback = (entries, observer) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('is-visible'); // Use specific class if needed or 'animate-in'
+                                    // Apply delay if applicable (like results items)
+                                    if (entry.target.classList.contains('result-item')) {
+                                         const delay = entry.target.getAttribute('data-delay') || '0s';
+                                         entry.target.style.transitionDelay = delay;
+                                    }
+                                     if (entry.target.classList.contains('feature-card')) {
+                                         const delay = entry.target.style.transitionDelay || '0s'; // Use existing delay if set
+                                         // Trigger class that respects existing delays set in CSS
+                                    }
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        };
+                        const observer = new IntersectionObserver(observerCallback, observerOptions);
+                        if (!section.classList.contains('is-visible') && !section.classList.contains('animate-in')) { // Avoid re-observing
+                           observer.observe(section);
+                        }
+
+                    } else {
+                        // Handle full section animations (Hero, Results Section Title, CTA, Lines Section)
+                         const sectionTop = section.getBoundingClientRect().top;
+                         const windowHeight = window.innerHeight;
+                         const triggerPoint = windowHeight * 0.8; // Adjust general trigger
+
+                         if (sectionTop < triggerPoint) {
+                             if (!section.classList.contains('animate-in')) {
+                                 section.classList.add('animate-in');
+
+                                 // Specific logic for results title/button if needed
+                                 if (section.classList.contains('results-section')) {
+                                     const title = section.querySelector('.results-title');
+                                     const button = section.querySelector('.results-button');
+                                     if(title) title.classList.add('animate-in'); // Assuming styles are set for .animate-in .results-title
+                                     if(button) button.classList.add('animate-in'); // Assuming styles are set for .animate-in .results-button
+                                 }
+                                  // Specific logic for CTA title/button
+                                  if (section.classList.contains('final-cta-section')) {
+                                     const title = section.querySelector('.cta-title');
+                                     const button = section.querySelector('.cta-button');
+                                     // Let CSS handle delay via transition-delay on the elements themselves
+                                  }
+
+                                 // Start line cycling if it's that section
+                                 if (section.classList.contains('sequential-lines-section')) {
+                                      startLineCycling(); // Make sure this function is defined or handled
+                                 }
+                             }
+                         } else {
+                             // Optional: Remove 'animate-in' or stop line cycling if scrolling up
+                              if (section.classList.contains('animate-in')) {
+                                 // section.classList.remove('animate-in'); // Uncomment for re-animation on scroll up
+                                  if (section.classList.contains('sequential-lines-section')) {
+                                      stopLineCycling(); // Make sure this function is defined or handled
+                                  }
+                              }
+                         }
+                    }
+                });
+            }
+
+            // Make sure line cycling functions are defined if used above
+            // Dummy functions if not already present
+            function startLineCycling() { /* console.log('Start lines'); */ }
+            function stopLineCycling() { /* console.log('Stop lines'); */ }
+
+            window.addEventListener('scroll', checkGeneralScroll);
+            checkGeneralScroll(); // Initial check
+
+            // --- Keep other specific JS like Number Tumbler, Alert Click, etc. ---
+             // --- Animated Number Tumbler --- (Keep existing code)
+            // ...
+            // --- Alert Card Click Handling --- (Keep existing code, if separate)
+            // ...
+             // --- Sequential Lines Animation --- (Keep existing code)
+            // ...
+                    // --- Dynamic Copyright Year ---
+            const yearSpan = document.getElementById('copyright-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            // --- End Dynamic Copyright Year ---
+ // end DOMContentLoaded
+      // --- End Feature Card Animation ---
+    }); // end DOMContentLoaded
+  </script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gulyam_ai - Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            /* Enhanced background: Animated subtle gradient */
+            background: linear-gradient(-45deg, #000000, #050a1a, #000000, #0a0514);
+            background-size: 400% 400%; /* Make gradient large for smooth animation */
+            animation: moveGradient 30s ease infinite; /* Apply slow animation */
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header Styling - Same as before (sticky) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { text-decoration: none; color: #ddd; font-size: 16px; transition: color 0.3s ease; }
+        nav ul li a:hover { color: #fff; }
+        .demo-button {
+            background-color: transparent; color: #fff; border: 1px solid #fff; padding: 10px 20px;
+            border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .demo-button:hover { background-color: #fff; color: #000; }
+
+        /* Product Section Styling */
+        .product-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+            padding: 80px 20px; /* Increased padding */
+            margin-bottom: 20px; /* Slightly less margin */
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Subtle background effect using pseudo-element */
+        .product-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07; /* Slightly increased opacity for subtle visibility */
+            background-size: cover;
+            background-position: center center;
+            z-index: -1;
+            /* Radial gradient applied via ID, spreading further */
+            background-image: radial-gradient(ellipse at center, var(--product-glow-color, #555) 0%, transparent 65%);
+            filter: blur(5px); /* Add a slight blur to the glow */
+        }
+
+        /* Assigning specific glow colors using CSS variables */
+        #thermosolver-section { --product-glow-color: #ff6b3b; }
+        #stressmaster-section { --product-glow-color: #4ca1af; }
+        #mechmotion-section { --product-glow-color: #a569bd; }
+        #fluidflow-section { --product-glow-color: #58d68d; }
+        #designgenesis-section { --product-glow-color: #f4d03f; }
+        #manufactwin-section { --product-glow-color: #ec7063; }
+        #robopilot-section { --product-glow-color: #48c9b0; }
+        #matsci-section { --product-glow-color: #bdc3c7; }
+        #enginetune-section { --product-glow-color: #e67e22; }
+        #mesh-mind-section { --product-glow-color: #5dade2; } /* Changed ID and color */
+
+
+        .product-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 600px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+        }
+
+        .learn-more-button {
+            background-color: #fff; color: #000; border: none; padding: 10px 25px;
+            border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: bold;
+            display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+            opacity: 0; transform: translateY(50px);
+            transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
+        }
+
+        .learn-more-button:hover {
+            background-color: #ddd;
+            transform: translateY(-2px); /* Subtle lift on hover */
+        }
+        .learn-more-button i { font-size: 0.9em; }
+
+        /* Animation Classes */
+        .animate-in .product-title,
+        .animate-in .product-description,
+        .animate-in .learn-more-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px; position: static; background-color: #000; backdrop-filter: none;
+            }
+            nav ul { margin-top: 15px; flex-direction: column; align-items: center; }
+            nav ul li { margin: 10px 0; }
+            .product-section { min-height: 50vh; padding: 40px 15px; }
+            .product-title { font-size: 2rem; }
+            .product-description { font-size: 0.9rem; }
+            .product-section::before { opacity: 0.05; filter: blur(3px); } /* Adjust for mobile */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">gulyam_ai</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/product">Product</a></li>
+                <li><a href="/about/">Company</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </nav>
+        <button class="demo-button">Request a Demo</button>
+    </header>
+
+    <!-- Products -->
+    <section class="product-section" id="thermosolver-section">
+        <h1 class="product-title">ThermoSolver</h1>
+        <p class="product-description">
+            Unlock thermal insights with AI. ThermoSolver intelligently analyzes heat transfer and thermodynamic cycles,
+            predicting system behavior and optimizing thermal management designs faster than ever.
+        </p>
+        <a href="thermosolver/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="stressmaster-section">
+        <h1 class="product-title">StressMaster</h1>
+        <p class="product-description">
+            Ensure structural integrity with AI-powered stress analysis. StressMaster predicts stress, strain,
+            and fatigue in components under complex loads, optimizing designs for durability and safety.
+        </p>
+        <a href="stressmaster/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="mechmotion-section">
+        <h1 class="product-title">MechMotion AI</h1>
+        <p class="product-description">
+            Master machine dynamics with intelligent simulation. MechMotion AI analyzes kinematics and kinetics,
+            predicts vibrations, and optimizes the performance and lifespan of dynamic mechanical systems.
+        </p>
+        <a href="mech-ai/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="fluidflow-section">
+        <h1 class="product-title">FluidFlow AI</h1>
+        <p class="product-description">
+            Navigate fluid dynamics challenges with AI precision. FluidFlow AI simulates complex fluid behaviors,
+            optimizing aerodynamic profiles, internal flow systems, and multiphase interactions.
+        </p>
+        <a href="fluid_flow_ai/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="designgenesis-section">
+        <h1 class="product-title">DesignGenesis AI</h1>
+        <p class="product-description">
+            Accelerate innovation with AI-driven design. DesignGenesis AI offers generative design capabilities,
+            intelligent topology optimization, and smart component suggestions based on performance criteria.
+        </p>
+        <a href="design_master/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="manufactwin-section">
+        <h1 class="product-title">ManufacTwin AI</h1>
+        <p class="product-description">
+            Build intelligent digital twins for your manufacturing floor. ManufacTwin AI optimizes production processes,
+            enables predictive maintenance, and enhances quality control through real-time data analysis.
+        </p>
+        <a href="manufactaring_twin/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="robopilot-section">
+        <h1 class="product-title">RoboPilot AI</h1>
+        <p class="product-description">
+            Infuse your robots with advanced perception and control. RoboPilot AI enables autonomous task execution,
+            intelligent environment interaction, and seamless human-robot collaboration.
+        </p>
+        <a href="robopilot_ai/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="matsci-section">
+        <h1 class="product-title">MatSci AI</h1>
+        <p class="product-description">
+            Expedite materials discovery and analysis. MatSci AI predicts material properties based on composition and structure,
+            analyzes microstructures, and suggests novel materials for specific applications.
+        </p>
+        <a href="mat_si/" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="enginetune-section">
+        <h1 class="product-title">EngineTune AI</h1>
+        <p class="product-description">
+            Achieve optimal engine performance through intelligent calibration. EngineTune AI analyzes combustion data
+            and adjusts parameters dynamically for enhanced efficiency, power, and emissions control.
+        </p>
+        <a href="#" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="product-section" id="mesh-mind-section"> <!-- Changed ID -->
+        <h1 class="product-title">MeshMind AI</h1> <!-- Changed Name -->
+        <p class="product-description">
+            Streamline your Finite Element Analysis workflows. MeshMind AI intelligently assists with mesh generation,
+            interprets simulation results, and suggests design improvements based on FEA insights.
+        </p>
+        <a href="#" class="learn-more-button">Learn more <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <script>
+        // JavaScript for scroll animation remains the same
+        document.addEventListener('DOMContentLoaded', function() {
+            const productSections = document.querySelectorAll('.product-section');
+
+            function checkScroll() {
+                productSections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (sectionTop < windowHeight * 0.85) { // Slightly adjusted trigger point
+                        section.classList.add('animate-in');
+                    }
+                });
+            }
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
+        });
+    </script>
+</body>
+</html>
