@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gulyam_ai - Request a Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @keyframes moveGradient { /* Background animation keyframes */
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #000000, #050a1a, #000000, #0a0514);
+            background-size: 400% 400%;
+            animation: moveGradient 30s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header Styling - Sticky */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { text-decoration: none; color: #ddd; font-size: 16px; transition: color 0.3s ease; }
+        nav ul li a:hover { color: #fff; }
+
+        .demo-button { /* This is the header button */
+            background-color: transparent; color: #fff; border: 1px solid #fff; padding: 10px 20px;
+            border-radius: 5px; cursor: pointer; font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+        .demo-button:hover {
+            background-color: #fff; color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Form Section Styling */
+        .form-section {
+            padding: 60px 20px;
+            text-align: center;
+            display: flex; /* For centering container */
+            flex-direction: column;
+            align-items: center;
+            min-height: calc(100vh - 100px); /* Adjust based on header height */
+            justify-content: center; /* Vertical centering */
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto; /* Horizontal centering if parent isn't flex centering */
+            background: rgba(20, 20, 25, 0.7); /* Dark semi-transparent */
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3); /* Added subtle shadow */
+        }
+
+        .form-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        /* Form Element Styling */
+        .form-container p label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 0.9rem;
+            font-weight: 600; /* Make labels a bit bolder */
+        }
+
+        .form-container p input[type="text"],
+        .form-container p input[type="email"],
+        .form-container p input[type="tel"], /* Added for phone number if it renders as tel */
+        .form-container p textarea {
+            width: calc(100% - 24px); /* Account for 12px padding on each side */
+            padding: 12px; /* Consistent padding */
+            border: 1px solid #444; /* Slightly lighter border */
+            border-radius: 5px;
+            background-color: #1a1a1f; /* Slightly lighter input background */
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 20px; /* Increased space between form fields */
+            box-sizing: border-box; /* Ensure padding doesn't increase width */
+        }
+
+        .form-container p input[type="text"]:focus,
+        .form-container p input[type="email"]:focus,
+        .form-container p input[type="tel"]:focus,
+        .form-container p textarea:focus {
+            border-color: #74c0fc; /* Blue border on focus */
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 8px rgba(116, 192, 252, 0.3); /* Subtle glow on focus */
+        }
+
+
+        .form-container p textarea {
+            min-height: 100px; /* Increased min-height */
+            resize: vertical; /* Allow vertical resize */
+        }
+
+        .form-container .errorlist {
+            color: #ff4d4d; /* Red for errors */
+            list-style-type: none;
+            padding: 0;
+            margin: -10px 0 10px 0; /* Adjust position */
+            text-align: left;
+            font-size: 0.85rem;
+        }
+         /* Help text styling (Django adds help text in <span class="helptext"> within <p>) */
+        .form-container p .helptext {
+            display: block;
+            text-align: left;
+            font-size: 0.8rem;
+            color: #888;
+            margin: -10px 0 10px 2px; /* Position below input */
+        }
+
+
+        .submit-demo-button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem; /* Harmonized font size */
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+        .submit-demo-button:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                position: static; /* Header becomes static on small screens */
+                background-color: #000;
+                backdrop-filter: none;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-direction: column;
+                align-items: center;
+                /* Consider hiding nav for a dedicated form page or using a burger menu */
+                /* display: none;  */
+            }
+            nav ul li { margin: 10px 0; }
+
+            .form-section {
+                padding: 40px 15px;
+                min-height: calc(100vh - 70px); /* Adjust for static header */
+            }
+            .form-container {
+                padding: 25px;
+            }
+            .form-container h1 {
+                font-size: 2rem;
+            }
+            .form-container p input[type="text"],
+            .form-container p input[type="email"],
+            .form-container p input[type="tel"],
+            .form-container p textarea {
+                font-size: 0.95rem; /* Slightly smaller font in inputs on mobile */
+            }
+            .submit-demo-button {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">gulyam_ai</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/product">Product</a></li>
+                <li><a href="/about">Company</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </nav>
+        <!-- This button might eventually link to this page itself or be styled as "Active" -->
+        <button class="demo-button">Request a Demo</button>
+    </header>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h1>Request a Demo</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="submit-demo-button">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Basic Footer (Optional) -->
+    <footer style="text-align: center; padding: 20px 0; font-size: 0.8rem; color: #666; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto;">
+        &copy; {% now "Y" %} gulyam_ai Inc. All rights reserved.
+    </footer>
+
+</body>
+</html>

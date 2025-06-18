@@ -18,4 +18,5 @@ path('product/fluid_flow_ai/', views.fluid_flow, name='fluid_flow'),
 
      path('product/robopilot_ai/', views.robopilot_ai, name='robopilot_ai'),
     path('product/mat_si/',views.mat_si, name='mat_si'),
+    path('request-demo/', views.request_demo, name='request_demo'),
 ]

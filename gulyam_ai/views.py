@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import DemoRequestForm
 
 
 def home(request):
@@ -46,3 +47,13 @@ def robopilot_ai(request):
 def mat_si(request):
     return render(request,'mat_si.html')
 
+
+def request_demo(request):
+    if request.method == 'POST':
+        form = DemoRequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/') # Or to a success page like '/demo/thank-you/'
+    else:
+        form = DemoRequestForm()
+    return render(request, 'request_demo.html', {'form': form})
